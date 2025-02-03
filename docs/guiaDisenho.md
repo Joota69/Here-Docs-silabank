@@ -49,12 +49,12 @@ Definición de los elementos reutilizables en el diseño.
 ### 📌 Botones
 | Tipo | Estilo |
 |------|--------|
-| **Primario** | Fondo `#1E90FF`, Texto `#FFFFFF`, Borde `None` |
+| **Primario** | Fondo `#a90a2e`, Texto `#FFFFFF`, Borde `None` |
 | **Secundario** | Fondo `None`, Texto `#1E90FF`, Borde `2px solid #1E90FF` |
 | **Deshabilitado** | Fondo `#DDDDDD`, Texto `#AAAAAA` |
 
 ### 📌 Inputs y Formularios
-- Bordes redondeados: `4px`
+- Bordes redondeados: `10px`
 - Placeholder: Color `#AAAAAA`
 - Enfoque: Borde `2px solid #1E90FF`
 
