@@ -1,7 +1,4 @@
 # 📄 Biblia de Diseño
-
-📌 _Documento de referencia para el diseño de la interfaz de usuario (UI) y experiencia de usuario (UX) del proyecto._
-
 ---
 
 ## 🎨 1. Identidad Visual
@@ -10,12 +7,13 @@ Definimos la identidad visual para mantener coherencia en todo el proyecto.
 ### 📌 Paleta de Colores
 | Nombre | Código HEX | Uso |
 |--------|-----------|------|
-| **Primario** | `#1E90FF` | Botones principales, enlaces destacados |
-| **Secundario** | `#FFD700` | Elementos de acento y resaltado |
-| **Fondo** | `#F5F5F5` | Fondo principal de la interfaz |
-| **Texto Principal** | `#333333` | Color base para textos |
-| **Texto Secundario** | `#666666` | Textos secundarios, etiquetas |
-| **Bordes y Líneas** | `#DDDDDD` | Separadores, contornos |
+| **Primario** | `#a90a2e` | Botones principales, enlaces destacados |
+| **Secundario** | `#f1bf01` | Elementos de acento y resaltado |
+| **Fondo** | `#f5f5f5` | Fondo principal de la interfaz |
+| **Texto Principal** | `#ffffff` | Color base para textos |
+| **Texto Secundario** | `#333333` | Textos secundarios, etiquetas |
+| **Bordes y Líneas** | `#dddddd` | Separadores, contornos |
+| **Menús flotantes** | `#ffffff` | recuadros que estarán por encima |
 
 ---
 
