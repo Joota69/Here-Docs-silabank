@@ -1,2 +1,2 @@
 # Here-Docs-silabank
- Una app para estudiantes de la Universidad Cayetano Heredia que permite consultar de manera rápida y eficiente los sílabos de los cursos, optimizando la planificación académica.
+Es una aplicación diseñada por Estudiantes de Cayetano heredia para los estudiantes de la Universidad Cayetano Heredia que facilita el acceso rápido y eficiente a los sílabos de sus cursos. Esta herramienta busca mejorar la experiencia educativa permitiendo a los alumnos planificar mejor sus estudios y estar al día con los requisitos académicos de cada asignatura facilitando la toma de decisiones en el proceso de la matrícula.
