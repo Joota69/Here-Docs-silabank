@@ -37,7 +37,7 @@ Definimos la identidad visual para mantener coherencia en todo el proyecto.
 ## 📏 3. Espaciado y Maquetación
 Para mantener consistencia en la distribución del contenido.
 
-- **Padding y Margins:** Se usan múltiplos de `8px` (`8px`, `16px`, `24px`, `32px`)
+- **Padding y Margins:** padding: 12px 25px;
 - **Grid System:** Basado en `12 columnas`
 - **Ancho Máximo de Contenido:** `1200px`
 
