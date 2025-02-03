@@ -20,17 +20,17 @@ Definimos la identidad visual para mantener coherencia en todo el proyecto.
 ## 🔤 2. Tipografía
 
 ### 📌 Fuentes Principales
-- **Primaria:** `Inter`, `Arial`, `sans-serif`
-- **Secundaria:** `Roboto`, `sans-serif`
+- **Primaria:** `Sedan SC`
+- **Secundaria:** `Courier Prime`
 
 ### 📌 Tamaños de Fuente
 | Uso | Tamaño (px) | Ejemplo |
 |-----|------------|---------|
-| **Títulos (H1-H2)** | `32px - 24px` | `font-weight: bold;` |
-| **Subtítulos (H3-H4)** | `20px - 18px` | `font-weight: semi-bold;` |
+| **Títulos (H1-H2)** | `20px` | `font-weight: bold;` |
+| **Subtítulos (H3-H4)** | `16px` | `font-weight: semi-bold;` |
 | **Texto Normal** | `16px` | `font-weight: normal;` |
-| **Texto Secundario** | `14px` | `color: #666666;` |
-| **Botones** | `16px - 14px` | `text-transform: uppercase;` |
+| **Texto Secundario** | `14px` | `font-weight: normal; color: #666666;` |
+| **Botones** | `16px` | `font-weight: bold; text-transform: uppercase;` |
 
 ---
 
