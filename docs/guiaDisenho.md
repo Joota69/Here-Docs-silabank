@@ -39,7 +39,7 @@ Para mantener consistencia en la distribución del contenido.
 
 - **Padding y Margins:** padding: 12px 25px;
 - **Grid System:** Basado en `12 columnas`
-- **Ancho Máximo de Contenido:** `1200px`
+- **Ancho Máximo de Contenido:** `600px`
 
 ---
 
