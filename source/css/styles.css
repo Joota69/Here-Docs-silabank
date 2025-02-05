@@ -190,7 +190,54 @@ header h1 {
     width: 30vw;
     height: 30vw;
     border-radius: 50%;
-    margin: 0 auto;
     transition: transform 0.3s ease;
+    margin-top: 5%;
+}
 
+.faculty {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.faculty:hover {
+    background-color: #333333;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.faculty1 {
+    top: 0;
+    left: 0;
+    background-color: #e74c3c;
+    border-top-left-radius: 100% 100%;
+}
+
+.faculty2 {
+    top: 0;
+    right: 0;
+    background-color: #3498db;
+    border-top-right-radius: 100% 100%;
+}
+
+.faculty3 {
+    bottom: 0;
+    left: 0;
+    background-color: #2ecc71;
+    border-bottom-left-radius: 100% 100%;
+}
+
+.faculty4 {
+    bottom: 0;
+    right: 0;
+    background-color: #9b59b6;
+    border-bottom-right-radius: 100% 100%;
 }
