@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #f5f5f5;
 }
+
 header {
     background-color: #a90a2e;
     color: white;
@@ -16,16 +17,19 @@ header h1 {
     margin: 0;
     font-size: 20px;
 }
+
 .nav-links {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
+
 .nav-links a {
     color: white;
     text-decoration: none;
     font-size: 16px;
 }
+
 .nav-links a:hover {
     text-decoration: underline;
 }
@@ -51,7 +55,7 @@ header h1 {
 }
 
 
-.upchLogo{
+.upchLogo {
     width: 200px;
     height: 90px;
     display: flex;
@@ -63,7 +67,7 @@ header h1 {
 
 }
 
-.upchLogo img{
+.upchLogo img {
     width: 100%;
     height: 100%;
 }
@@ -73,8 +77,8 @@ header h1 {
     top: 50%;
     left: 10%;
     right: 10%;
-    width: 40vw; 
-    height: 40vw; 
+    width: 40vw;
+    height: 40vw;
     border-radius: 50%;
     margin: 0 auto;
 }
@@ -85,48 +89,28 @@ header h1 {
     flex-direction: row;
     overflow: hidden;
 }
-.middleMan{
+
+.middleMan {
     width: 40%;
     height: auto;
 }
+
 @media (max-width: 930px) {
     .mainLobby {
         flex-direction: column;
     }
+
     .circleOfFacultys {
-        width: 80vw; 
+        width: 80vw;
         height: 80vw;
     }
 }
 
 
-.segment {
-    position: absolute;
-    border: 20px solid #000;
-    display: inline-block;
-    min-width: 200px;
-    min-height: 200px;
-    border-radius: 50%;
-    top: -15px;
-    left: -15px;
-    border-color: transparent;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border-width: 100px;
-}
-
-.s1 { border-top-color: #a90a2e; left: 2px}
-.s2 { border-right-color: #a90a2e; top: 2px; left: 2px}
-.s3 { border-bottom-color: #a90a2e; top: 2px; }
-.s4 { border-left-color: #a90a2e; }
-
-
-
 .circleOfCareer {
     position: relative;
     width: 30vw;
-    height: 30vw; 
+    height: 30vw;
     border-radius: 50px;
     margin: 0 auto;
     transition: transform 0.3s ease;
@@ -143,6 +127,7 @@ header h1 {
     cursor: pointer;
     font-size: 10px;
 }
+
 .career1 {
     top: 0;
     left: 0;
@@ -178,4 +163,191 @@ header h1 {
     right: 0;
     background-color: #9b59b6;
     border-bottom-right-radius: 100% 100%;
+}
+
+.examplewrapper {
+
+    margin: 0 0 1em;
+    background: #fff;
+    background: -webkit-linear-gradient(top, #d9d9d9, #fff);
+    background: linear-gradient(180deg, #d9d9d9 0, #fff);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startcolor', endColorstr='@endcolor', GradientType=0);
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1em 0;
+}
+
+.col4 {
+    float: left;
+    width: 30%;
+    margin: 0 calc(3% / 2);
+}
+
+.squarewrapper {
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+}
+
+.csscircle {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border-radius: 100%;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.circle8innersmall:after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background: #fff;
+    border-radius: 1000px;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.segmentwrapper {
+    position: absolute;
+    top: 49%;
+    left: 49%;
+    width: 2%;
+    height: 2%;
+}
+
+.circle8innersmall .segment1 {
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-tranform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+.circle8innersmall .segment2 {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-tranform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+.circle8innersmall .segment3 {
+    transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -moz-tranform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+}
+
+.circle8innersmall .segment4 {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-tranform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+.circle8innersmall .segment5 {
+    transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -moz-tranform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+}
+
+.circle8innersmall .segment6 {
+    transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -moz-tranform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
+
+.circle8innersmall .segment7 {
+    transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    -moz-tranform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+}
+
+.circle8innersmall .segment8 {
+    transform: rotate(1turn);
+    -ms-transform: rotate(1turn);
+    -moz-tranform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    -o-transform: rotate(1turn);
+}
+
+.segment {
+    bottom: 50%;
+    right: 50%;
+    width: 5000%;
+    height: 5000%;
+    overflow: hidden;
+    transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    -webkit-transform-origin: 0 100%;
+    position: absolute;
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+.circle8innersmall .segment {
+    transform: skewX(45deg);
+    -ms-transform: skewX(45deg);
+    -moz-tranform: skewX(45deg);
+    -webkit-transform: skewX(45deg);
+    -o-transform: skewX(45deg);
+}
+
+.segment .inner {
+    position: absolute;
+    transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    right: -50%;
+    bottom: -50%;
+    width: 100%;
+    height: 100%;
+    background: #680119;
+    border-radius: 100%;
+    transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    -webkit-transform-origin: 50% 50%;
+    cursor: pointer;
+}
+
+.circle8innersmall .segment .inner {
+    transform: skewX(-45deg);
+    -ms-transform: skewX(-45deg);
+    -moz-tranform: skewX(-45deg);
+    -webkit-transform: skewX(-45deg);
+    -o-transform: skewX(-45deg);
+}
+
+.circle8innersmall .segment .inner:hover {
+    transform: skewX(-45deg) scale(1.1);
+    -ms-transform: skewX(-45deg) scale(1.1);
+    -moz-tranform: skewX(-45deg) scale(1.1);
+    -webkit-transform: skewX(-45deg) scale(1.1);
+    -o-transform: skewX(-45deg) scale(1.1);
+}
+
+.circle8innersmall .segmentwrapper:nth-child(2n + 2) .inner {
+    background: #a90a2e;
 }
