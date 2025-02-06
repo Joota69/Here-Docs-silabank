@@ -70,28 +70,41 @@ function abrirCarrera4(){
             circle2.style.transform = "scale(1)";
         }, 100);
     }, 500); 
+
 }
+
+
+
+
+
+
+
+
+
 
 
 const botonesContainer = document.getElementById("botones-container");
 const cursosDropdown = document.getElementById("cursos-dropdown");
 
-let cursosPorCiclo = {};
 
-// Función para cargar los cursos desde el archivo TXT
+
+
+
+
+let cursosPorCiclo = {};
+console.log(cursosPorCiclo);
+
 async function cargarCursos() {
     try {
-        const response = await fetch("/Here-Docs-silabank/mallasCurriculares/mallasIngenieriaInformatica/cursos_por_ciclo_informatica_2022.txt"); // Cargar el archivo
-        const texto = await response.text(); // Convertir a texto
-        
-        procesarTexto(texto); // Procesar el contenido
-        generarBotones(); // Generar los botones después de cargar los datos
+        const response = await fetch("/Here-Docs-silabank/mallasCurriculares/mallasIngenieriaInformatica/cursos_por_ciclo_informatica_2022.txt"); 
+        const texto = await response.text(); 
+        procesarTexto(texto); 
+        generarBotones(); 
     } catch (error) {
         console.error("Error cargando el archivo:", error);
     }
 }
 
-// Función para procesar el contenido del archivo TXT
 function procesarTexto(texto) {
     const lineas = texto.split("\n").map(linea => linea.trim()); // Separar líneas y limpiar espacios
     let cicloActual = null;
@@ -99,7 +112,7 @@ function procesarTexto(texto) {
     lineas.forEach(linea => {
         if (linea === "") return; // Ignorar líneas vacías
 
-        if (linea.match(/^[A-ZÁÉÍÓÚÑ]+$/)) { // Detectar ciclos (mayúsculas)
+        if (linea.match(/^(primer|segundo|tercero|cuarto|quinto|sexto|séptimo|octavo|noveno|décimo)$/i)) { 
             cicloActual = linea;
             cursosPorCiclo[cicloActual] = [];
         } else if (cicloActual) {
@@ -108,7 +121,6 @@ function procesarTexto(texto) {
     });
 }
 
-// Función para generar los botones dinámicamente
 function generarBotones() {
     Object.keys(cursosPorCiclo).forEach((ciclo) => {
         const boton = document.createElement("button");
