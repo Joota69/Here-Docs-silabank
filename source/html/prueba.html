@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingeniería Informática</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #a90a2e;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: Sedan SC;
+        }
+
+        p{
+            text-align: center;
+            font-family: Courier Prime;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .yellow-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #f1bf01;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: fixed;
+            top: 5px;
+            right: 20px;
+        }
+
+        .yellow-circle img {
+            width: 80%;
+        }
+
+        .upchLogo img {
+            width: auto;
+            max-height: 50px;
+            position: fixed;
+            left: 20px;
+            top: 10px;
+            z-index: 1001;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            top: 80px;
+            z-index: 1002;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            width: 120px;
+            opacity: 0.5;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1.5);
+        }
+
+        .content {
+            display: none; /* Inicialmente oculto */
+            padding: 20px;
+            margin-top: 200px; /* Ajuste según necesidades */
+        }
+        .active {
+            display: block; /* Mostrar contenido activo */
+        }
+
+        /* Nodos del año 2020*/
+
+        .cycle-container1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 0px;
+            position: relative;
+            width: 100%;
+        }
+        .cycle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 200px;
+            position: relative;
+            width: 100%;
+        }
+
+        .node {
+            width: 70px;
+            height: 70px;
+            background-color: #f1bf01;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .node:hover {
+            transform: scale(1.2);
+            background-color: #ffc107;
+        }
+
+        .node:after {
+            content: '→';
+            position: absolute;
+            top: 21px;
+            right: -18px;
+            font-size: 16px;
+            color: black;
+        }
+
+        #X:after {
+            display: none;
+        }
+
+    
+
+        .button {
+            position: relative;
+            height: 30vh; /* Ajusta la altura del contenedor al 100% de la altura de la ventana */
+            display: flex;
+            align-items: flex-end; /* Alinea el contenido al final del contenedor (parte inferior) */
+            justify-content: center; /* Centra el contenido horizontalmente */
+        }
+        
+        .download-btn {
+            padding: 10px 20px;
+            background-color: #a90a2e; /* Color de fondo rojo */
+            color: white; /* Texto blanco */
+            text-decoration: none; /* Sin subrayado */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño del texto */
+        }
+        
+
+        .site-footer {
+            background-color: #a90a2e;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .footer-section {
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>INGENIERÍA INFORMÁTICA</h1>
+        <div class="yellow-circle">
+            <img src="images/pfpIcon.webp" alt="profile icon">
+        </div>
+        <div class="upchLogo">
+            <img src="images/cayetanoLogo.png" alt="Cayetano logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Swiper Container -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" data-year="2020">2020</div>
+            <div class="swiper-slide" data-year="2021">2021</div>
+            <div class="swiper-slide" data-year="2022">2022</div>
+            <div class="swiper-slide" data-year="2023">2023</div>
+            <div class="swiper-slide" data-year="2024">2024</div>
+            <div class="swiper-slide" data-year="2025">2025</div>
+        </div>
+    </div>
+
+    <!--Divisor de contenido para cada año-->
+    <!-- Contenido para 2020 -->
+    <div id="content2020" class="content">
+        <h2>Malla Curricular 2020</h2>
+        <p>Descripción detallada de la malla curricular para el año 2020.</p>
+        <div class="cycle-container1">
+            <div class="node" id="I">I</div>
+            <div class="node" id="II">II</div>
+            <div class="node" id="III">III</div>
+            <div class="node" id="IV">IV</div>
+            <div class="node" id="V">V</div>
+            <div class="node" id="VI">VI</div>
+            <div class="node" id="VII">VII</div>
+            <div class="node" id="VIII">VIII</div>
+            <div class="node" id="IX">IX</div>
+            <div class="node" id="X">X</div>
+        </div>
+        <a href="https://drive.google.com/open?id=XXXXX" class="download-btn" target="_blank">Descargar Malla 2020</a>
+    </div>
+
+    <!-- Contenido para 2021 -->
+    <div id="content2021" class="content" style="display: none;">
+        <h2>Malla Curricular 2021</h2>
+        <p>Descripción detallada de la malla curricular para el año 2021, incluyendo nuevos enfoques y tecnologías emergentes.</p>
+        <div class="cycle-container1">
+            <div class="node" id="I">I</div>
+            <div class="node" id="II">II</div>
+            <div class="node" id="III">III</div>
+            <div class="node" id="IV">IV</div>
+            <div class="node" id="V">V</div>
+            <div class="node" id="VI">VI</div>
+            <div class="node" id="VII">VII</div>
+            <div class="node" id="VIII">VIII</div>
+            <div class="node" id="IX">IX</div>
+            <div class="node" id="X">X</div>
+        </div>
+        <a href="https://drive.google.com/open?id=YYYYY" class="download-btn" target="_blank">Descargar Malla 2021</a>
+    </div>
+
+
+    <!-- Otros años -->
+
+    <!-- Contenido para 2025 -->
+    <div id="content2025" class="content" style="display: none;">
+        <h2>Malla Curricular 2025</h2>
+        <p>La carrera de Ingeniería Informática de la Universidad Peruana Cayetano Heredia prepara profesionales para liderar 
+            la transformación digital en diversos sectores, mediante un enfoque que integra fundamentos sólidos en informática, 
+            inteligencia artificial y seguridad de datos. El programa fomenta habilidades prácticas y teóricas para desarrollar 
+            soluciones innovadoras que respondan a los desafíos tecnológicos del presente y futuro. Además, ofrece oportunidades 
+            para estudios y prácticas internacionales, respaldando una educación de calidad y alcance global.</p>
+        <div class="cycle-container1">
+            <div class="node" id="I">I</div>
+            <div class="node" id="II">II</div>
+            <div class="node" id="III">III</div>
+            <div class="node" id="IV">IV</div>
+            <div class="node" id="V">V</div>
+            <div class="node" id="VI">VI</div>
+            <div class="node" id="VII">VII</div>
+            <div class="node" id="VIII">VIII</div>
+            <div class="node" id="IX">IX</div>
+            <div class="node" id="X">X</div>
+        </div>
+        <div class="button">
+            <a href="https://drive.google.com/open?id=ZZZZZ" class="download-btn" target="_blank">Descargar Malla 2025</a>
+        </div>
+        
+    </div>
+
+
+
+   
+
+    
+
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="https://www.facebook.com/upch.pe" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/upch_pe" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/upch_pe" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                centeredSlides: true,
+                spaceBetween: 30,
+                freeMode: true,
+                grabCursor: true,
+                slideToClickedSlide: true,
+                initialSlide: getIndexForCurrentYear() // Configura el slide inicial al año actual
+            });
+    
+            // Función para obtener el índice del slide del año actual
+            function getIndexForCurrentYear() {
+                const currentYear = new Date().getFullYear().toString();
+                const allSlides = document.querySelectorAll('.swiper-slide');
+                for (let i = 0; i < allSlides.length; i++) {
+                    if (allSlides[i].textContent === currentYear) {
+                        showContentForYear(currentYear); // Muestra el contenido del año actual
+                        return i; // Retorna el índice del año actual
+                    }
+                }
+                return 0; // Si el año actual no está en los slides, retorna el primer slide
+            }
+    
+            // Muestra el contenido basado en el año
+            function showContentForYear(year) {
+                document.querySelectorAll('.content').forEach(content => {
+                    content.style.display = 'none'; // Oculta todos los contenidos
+                });
+                const activeContent = document.getElementById('content' + year);
+                if (activeContent) {
+                    activeContent.style.display = 'block'; // Muestra el contenido del año seleccionado
+                }
+            }
+    
+            // Evento clic para cada slide
+            document.querySelectorAll('.swiper-slide').forEach(slide => {
+                slide.addEventListener('click', function() {
+                    const selectedYear = this.dataset.year;
+                    showContentForYear(selectedYear); // Muestra el contenido para el año seleccionado
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
