@@ -86,34 +86,28 @@ function abrirCarrera4(){
 
 
 
+
+let cursosPorCiclo = {};
 const botonesContainer = document.getElementById("botones-container");
 const cursosDropdown = document.getElementById("cursos-dropdown");
 
-
-
-
-
-
-let cursosPorCiclo = {};
-console.log(cursosPorCiclo);
-
 async function cargarCursos() {
     try {
-        const response = await fetch("/Here-Docs-silabank/mallasCurriculares/mallasIngenieriaInformatica/cursos_por_ciclo_informatica_2022.txt"); 
+        const response = await fetch("/mallasCurriculares/mallasIngenieriaInformatica/cursos_por_ciclo_informatica_2022.txt"); 
         const texto = await response.text(); 
         procesarTexto(texto); 
-        generarBotones(); 
+        asignarEventosBotones(); 
     } catch (error) {
         console.error("Error cargando el archivo:", error);
     }
 }
 
 function procesarTexto(texto) {
-    const lineas = texto.split("\n").map(linea => linea.trim()); // Separar líneas y limpiar espacios
+    const lineas = texto.split("\n").map(linea => linea.trim()); 
     let cicloActual = null;
 
     lineas.forEach(linea => {
-        if (linea === "") return; // Ignorar líneas vacías
+        if (linea === "") return; 
 
         if (linea.match(/^(primer|segundo|tercero|cuarto|quinto|sexto|séptimo|octavo|noveno|décimo)$/i)) { 
             cicloActual = linea;
@@ -124,21 +118,22 @@ function procesarTexto(texto) {
     });
 }
 
-function generarBotones() {
-    Object.keys(cursosPorCiclo).forEach((ciclo) => {
-        const boton = document.createElement("button");
-        boton.textContent = ciclo;
-        boton.classList.add("ciclo-btn");
-        boton.onclick = () => mostrarCursos(ciclo);
-        botonesContainer.appendChild(boton);
+
+function asignarEventosBotones() {
+    const ciclos = Object.keys(cursosPorCiclo);
+    ciclos.forEach((ciclo, index) => {
+        const boton = document.getElementById(ciclo);
+        if (boton) {
+            boton.onclick = () => mostrarCursos(ciclo);
+        }
     });
 }
 
-// Función para mostrar los cursos en el dropdown
+
 function mostrarCursos(ciclo) {
     cursosDropdown.innerHTML = ""; // Limpiar opciones previas
 
-    // Agregar una opción por cada curso
+    
     cursosPorCiclo[ciclo].forEach((curso) => {
         const option = document.createElement("option");
         option.textContent = curso;
