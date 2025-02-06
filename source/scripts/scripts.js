@@ -15,6 +15,9 @@ function abrirCarrera1() {
             circle2.style.transform = "scale(1)";
         }, 100);
     }, 500); 
+    setTimeout(() => {
+        window.location.href = "/source/html/informatica.html";
+    }, 3000);
 }
 
 
