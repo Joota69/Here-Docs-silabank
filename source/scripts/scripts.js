@@ -109,7 +109,7 @@ function procesarTexto(texto) {
     lineas.forEach(linea => {
         if (linea === "") return; 
 
-        if (linea.match(/^(primer|segundo|tercero|cuarto|quinto|sexto|séptimo|octavo|noveno|décimo)$/i)) { 
+        if (linea.match(/^(primer|segundo|tercer|cuarto|quinto|sexto|séptimo|octavo|noveno|décimo)$/i)) { 
             cicloActual = linea;
             cursosPorCiclo[cicloActual] = [];
         } else if (cicloActual) {
