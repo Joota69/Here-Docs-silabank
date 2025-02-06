@@ -292,21 +292,25 @@
             soluciones innovadoras que respondan a los desafíos tecnológicos del presente y futuro. Además, ofrece oportunidades 
             para estudios y prácticas internacionales, respaldando una educación de calidad y alcance global.</p>
         <div class="cycle-container1">
-            <div class="node" id="I">I</div>
-            <div class="node" id="II">II</div>
-            <div class="node" id="III">III</div>
-            <div class="node" id="IV">IV</div>
-            <div class="node" id="V">V</div>
-            <div class="node" id="VI">VI</div>
-            <div class="node" id="VII">VII</div>
-            <div class="node" id="VIII">VIII</div>
-            <div class="node" id="IX">IX</div>
-            <div class="node" id="X">X</div>
+            <div class="node" id="I" onclick="mostrarCursos('PRIMER')">I</div>
+            <div class="node" id="II" onclick="mostrarCursos('SEGUNDO')">II</div>
+            <div class="node" id="III" onclick="mostrarCursos('TERCER')">III</div>
+            <div class="node" id="IV" onclick="mostrarCursos('CUARTO')">IV</div>
+            <div class="node" id="V" onclick="mostrarCursos('QUINTO')">V</div>
+            <div class="node" id="VI" onclick="mostrarCursos('SEXTO')">VI</div>
+            <div class="node" id="VII" onclick="mostrarCursos('SÉPTIMO')">VII</div>
+            <div class="node" id="VIII" onclick="mostrarCursos('OCTAVO')">VIII</div>
+            <div class="node" id="IX" onclick="mostrarCursos('NOVENO')">IX</div>
+            <div class="node" id="X" onclick="mostrarCursos('DÉCIMO')">X</div>
         </div>
         <div class="button">
-            <a href="https://drive.google.com/open?id=ZZZZZ" class="download-btn" target="_blank">Descargar Malla 2025</a>
+            <a href="https://drive.google.com/file/d/1y091Mi-o86HAPGjEzKH3uMn0rBDPBGYp/view?usp=sharing" class="download-btn" target="_blank">Descargar Malla 2025</a>
         </div>
         
+        <label for="options">Cursos:</label>
+            <select id="cursos-dropdown" name="options">
+                <option> Primero selecciona un ciclo</option>
+            </select>
     </div>
 
 
@@ -372,6 +376,7 @@
             });
         });
     </script>
+    <script src="\source\scripts\scripts.js"></script>
 
 </body>
 </html>
