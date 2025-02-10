@@ -88,8 +88,7 @@ function abrirCarrera4(){
 
 
 let cursosPorCiclo = {};
-const botonesContainer = document.getElementById("botones-container");
-const cursosDropdown = document.getElementById("cursos-dropdown");
+const botonesContainer = document.getElementById("cursos-container");
 
 async function cargarCursos() {
     try {
@@ -131,15 +130,49 @@ function asignarEventosBotones() {
 
 
 function mostrarCursos(ciclo) {
-    cursosDropdown.innerHTML = ""; // Limpiar opciones previas
+    botonesContainer.innerHTML = ""; // Limpiar opciones previas
 
-    
     cursosPorCiclo[ciclo].forEach((curso) => {
-        const option = document.createElement("option");
-        option.textContent = curso;
-        cursosDropdown.appendChild(option);
+        const button = document.createElement("button");
+        button.textContent = curso;
+        button.classList.add("curso-button");
+        botonesContainer.appendChild(button);
     });
+
+    descargarSilabosPorCiclo(ciclo);
 }
 
-// Llamar a la función para cargar los cursos
 cargarCursos();
+
+
+function descargarSilabosPorCiclo(ciclo) {
+
+    const botonDescargar = document.getElementById("descargarMallaoCurso");
+    botonDescargar.style.backgroundColor = "blue";  
+    botonDescargar.textContent = `Descargar sílabos de ${ciclo}`;
+    let linkMap = {
+        "primer": "https://drive.google.com/drive/folders/1ZPwgFELx13X4s9UxwPBBiOq3K5aZIQC6?usp=sharing",
+        "segundo": "https://drive.google.com/drive/folders/14flvnkyqOT7pIApHCeRjPzGN9sZqSP1q?usp=sharing",
+        "tercer": "https://drive.google.com/drive/folders/1II8rec5Fc3wX3AihE4OBO79BHeJZAhRG?usp=drive_link",
+        "cuarto": "https://drive.google.com/drive/folders/1_u991sNitQEBR_AG3Az9ec_gzW0FWj9v?usp=drive_link",
+        "quinto": "https://drive.google.com/drive/folders/1tSiM3pj5pOp2VvDrZiLpd56Db9FhjRj8?usp=drive_link",
+        "sexto": "https://drive.google.com/drive/folders/1Ukl3UTE4yAVkfxEo4auive-ZxU_w0gfa?usp=drive_link",
+        "séptimo": "https://drive.google.com/drive/folders/1_TofLWrDz5_W8xqkWwziIhR5ZBDXmV_s?usp=drive_link",
+        "octavo": "https://drive.google.com/drive/folders/1dfoWHFm3LQngqcbudoXD5b0HVdqkE92N?usp=drive_link",
+        "noveno": "https://drive.google.com/drive/folders/1ngdPCQPcrKVuGCUJjVlvp3UPwJQENUsZ?usp=drive_link",
+        "décimo": "https://drive.google.com/drive/folders/1iZlGR_0GC7rq0S0fiy_xZc0F-MNco2y-?usp=drive_link"
+    };
+
+    if (linkMap[ciclo.toLowerCase()]) {
+        botonDescargar.href = linkMap[ciclo.toLowerCase()];
+    } else {
+        botonDescargar.href = "#"; 
+    }
+    botonDescargar.onclick = () => {
+        const cursosSeleccionados = Array.from(cursosDropdown.selectedOptions).map(option => option.textContent);
+        descargarSilabos(ciclo, cursosSeleccionados);
+    };
+
+}
+
+
