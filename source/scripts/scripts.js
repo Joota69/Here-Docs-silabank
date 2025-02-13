@@ -1,6 +1,11 @@
-function abrirCarrera1() {
-    let circle1 = document.querySelector(".circleOfCareer");
-    let circle2 = document.querySelector(".circleOfInformatica");
+function abrirCarrera(circleOfCareer, circleOfSpecialization, redirectTo) {
+    let circle1 = document.querySelector(circleOfCareer);
+    let circle2 = document.querySelector(circleOfSpecialization);
+
+    if (!circle1 || !circle2) {
+        console.error("Elementos no encontrados:", circleOfCareer, circleOfSpecialization);
+        return; // Sale de la función si no encuentra los elementos
+    }
 
     // Fade out and scale down the first circle
     circle1.style.opacity = "0";
@@ -15,80 +20,38 @@ function abrirCarrera1() {
             circle2.style.transform = "scale(1)";
         }, 100);
     }, 500); 
-    setTimeout(() => {
-        window.location.href = "/source/html/informatica.html";
-    }, 1500);
-}
 
-
-function abrirCarrera2(){
-    let circle1 = document.querySelector(".circleOfCareer");
-    let circle2 = document.querySelector(".circleOfAmbiental");
-
-    circle1.style.opacity = "0";
-    circle1.style.transform = "scale(0.8)";
-
-    setTimeout(() => {
-        circle1.style.display = "none";
-        circle2.style.display = "flex";
-
+    // Redirige si es necesario
+    if (redirectTo) {
         setTimeout(() => {
-            circle2.style.opacity = "1";
-            circle2.style.transform = "scale(1)";
-        }, 100);
-    }, 500); 
+            window.location.href = redirectTo;
+        }, 3000);
+    }
 }
 
-function abrirCarrera3(){
-    let circle1 = document.querySelector(".circleOfCareer");
-    let circle2 = document.querySelector(".circleOfBiomedica");
-
-    circle1.style.opacity = "0";
-    circle1.style.transform = "scale(0.8)";
-
-    setTimeout(() => {
-        circle1.style.display = "none";
-        circle2.style.display = "flex";
-
-        setTimeout(() => {
-            circle2.style.opacity = "1";
-            circle2.style.transform = "scale(1)";
-        }, 100);
-    }, 500); 
+// Llamadas a la función específicas para cada carrera
+function abrirCarrera1() {
+    abrirCarrera(".circleOfCareer", ".circleOfInformatica", "/source/html/informatica.html");
 }
 
-function abrirCarrera4(){
-    let circle1 = document.querySelector(".circleOfCareer");
-    let circle2 = document.querySelector(".circleOfIndustrial");
-
-    circle1.style.opacity = "0";
-    circle1.style.transform = "scale(0.8)";
-
-    setTimeout(() => {
-        circle1.style.display = "none";
-        circle2.style.display = "flex";
-
-        setTimeout(() => {
-            circle2.style.opacity = "1";
-            circle2.style.transform = "scale(1)";
-        }, 100);
-    }, 500); 
-
+function abrirCarrera2() {
+    abrirCarrera(".circleOfCareer", ".circleOfAmbiental", null);
 }
 
+function abrirCarrera3() {
+    abrirCarrera(".circleOfCareer", ".circleOfBiomedica", null);
+}
 
-
-
-
-
-
-
+function abrirCarrera4() {
+    abrirCarrera(".circleOfCareer", ".circleOfIndustrial", null);
+}
 
 
 
 
 let cursosPorCiclo = {};
-const botonesContainer = document.getElementById("cursos-container");
+const botonesContainer = document.getElementById("botones-container");
+const cursosDropdown = document.getElementById("cursos-dropdown");
 
 async function cargarCursos() {
     try {
@@ -130,19 +93,85 @@ function asignarEventosBotones() {
 
 
 function mostrarCursos(ciclo) {
-    botonesContainer.innerHTML = ""; // Limpiar opciones previas
+    let detalles = document.getElementById('detalles-cursos'); // Asegúrate de que este contenedor está listo en el HTML
+    detalles.innerHTML = ""; // Limpiar contenidos anteriores
+    detalles.style.display = 'block'; // Preparar el contenedor para nuevos detalles
 
-    cursosPorCiclo[ciclo].forEach((curso) => {
-        const button = document.createElement("button");
-        button.textContent = curso;
-        button.classList.add("curso-button");
-        botonesContainer.appendChild(button);
+    cursosPorCiclo[ciclo].forEach(curso => {
+        const div = document.createElement('div');
+        div.textContent = curso;
+        div.className = 'detalle-curso'; // Asumiendo que tienes estilos para esto
+        detalles.appendChild(div);
     });
 
-    descargarSilabosPorCiclo(ciclo);
+    // Animación para mostrar detalles
+    detalles.style.opacity = '0';
+    detalles.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+        detalles.style.opacity = '1';
+        detalles.style.transform = 'translateY(0px)';
+    }, 100);
 }
 
+
+let currentNode = null; // Almacena el nodo actualmente centrado
+
+document.querySelectorAll('.node').forEach(node => {
+    node.addEventListener('click', function() {
+        // Alternar la clase 'no-arrow' en cada clic
+        this.classList.toggle('no-arrow');
+
+        const rect = this.getBoundingClientRect();
+        const centerX = (window.innerWidth / 2) - (rect.left + rect.width / 2); // Centrar horizontalmente
+
+        if (currentNode === this) {
+            this.style.transform = '';
+            currentNode = null;
+        } else {
+
+            if (currentNode) {
+                currentNode.style.transform = '';
+            }
+
+            this.style.transform = `translateX(${centerX}px)`;
+            currentNode = this;
+        }
+
+        document.querySelectorAll('.node').forEach(n => {
+            if (n !== currentNode) {
+                n.classList.toggle('hidden', currentNode !== null);
+            }
+        });
+    });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+   
+
+    window.addEventListener('resize', () => {
+        // Recalcular la posición en redimensiones para mantener la precisión
+        document.querySelectorAll('.node').forEach(node => {
+            if (!node.classList.contains('centered')) {
+                const rect = node.getBoundingClientRect();
+                node.style.left = `${rect.left}px`;
+                node.style.top = `${rect.top}px`;
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+// Llamar a la función para cargar los cursos
 cargarCursos();
+
 
 
 function descargarSilabosPorCiclo(ciclo) {
@@ -176,42 +205,49 @@ function descargarSilabosPorCiclo(ciclo) {
 }
 
 
-/**
- * Draws text along a curved path on a canvas element.
- *
- * @param {string} canvasId - The ID of the canvas element.
- * @param {string} text - The text to be drawn.
- * @param {number} x - The x-coordinate of the center of the curved path.
- * @param {number} y - The y-coordinate of the center of the curved path.
- * @param {number} radius - The radius of the curved path.
- * @param {number} angleOffset - The starting angle offset in radians.
- */
-function drawCurvedText(canvasId, text, x, y, radius, angleOffset) {
-    var canvas = document.getElementById(canvasId); // Get the canvas element by ID
-    var ctx = canvas.getContext("2d"); // Get the 2D drawing context
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
 
-    ctx.textAlign = "center"; // Set text alignment to center
-    ctx.textBaseline = "middle"; // Set text baseline to middle
-    ctx.fillStyle = "white"; // Set text color to white
-    ctx.font = "bold 20px Arial"; // Set font style
 
-    var angleStep = Math.PI / 6; // Define the angle step for each character
-    var startAngle = angleOffset; // Define the starting angle
 
-    for (var i = 0; i < text.length; i++) {
-        var angle = startAngle + (i * angleStep); // Calculate the angle for each character
-        var xPos = x + radius * Math.cos(angle); // Calculate the x position
-        var yPos = y + radius * Math.sin(angle); // Calculate the y position
-        ctx.save(); // Save the current context state
-        ctx.translate(xPos, yPos); // Translate to the character position
-        ctx.rotate(angle - Math.PI / 2); // Rotate the context to align the character
-        ctx.fillText(text[i], 0, 0); // Draw the character
-        ctx.restore(); // Restore the context state
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 30,
+        freeMode: true,
+        grabCursor: true,
+        slideToClickedSlide: true,
+        initialSlide: getIndexForCurrentYear() // Configura el slide inicial al año actual
+    });
+
+    // Función para obtener el índice del slide del año actual
+    function getIndexForCurrentYear() {
+        const currentYear = new Date().getFullYear().toString();
+        const allSlides = document.querySelectorAll('.swiper-slide');
+        for (let i = 0; i < allSlides.length; i++) {
+            if (allSlides[i].textContent === currentYear) {
+                showContentForYear(currentYear); // Muestra el contenido del año actual
+                return i; // Retorna el índice del año actual
+            }
+        }
+        return 0; // Si el año actual no está en los slides, retorna el primer slide
     }
-}
 
-drawCurvedText("canvas1", "FACI", 70, 70, -40, -Math.PI / 100);
-drawCurvedText("canvas2", "FAMEE", 30, 70, -40, 1.4);
-drawCurvedText("canvas3", "ZEVAF", 70, 35, 40, Math.PI / 2); 
-drawCurvedText("canvas4", "APSAF", 40, 30, 40, 0);
+    // Muestra el contenido basado en el año
+    function showContentForYear(year) {
+        document.querySelectorAll('.content').forEach(content => {
+            content.style.display = 'none'; // Oculta todos los contenidos
+        });
+        const activeContent = document.getElementById('content' + year);
+        if (activeContent) {
+            activeContent.style.display = 'block'; // Muestra el contenido del año seleccionado
+        }
+    }
+
+    // Evento clic para cada slide
+    document.querySelectorAll('.swiper-slide').forEach(slide => {
+        slide.addEventListener('click', function() {
+            const selectedYear = this.dataset.year;
+            showContentForYear(selectedYear); // Muestra el contenido para el año seleccionado
+        });
+    });
+});

@@ -6,87 +6,8 @@
     <title>Ingeniería Informática</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/source/css/informatica.css"> 
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #a90a2e;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            font-family: Sedan SC;
-        }
-
-        p{
-            text-align: center;
-            font-family: Courier Prime;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        .yellow-circle {
-            width: 50px;
-            height: 50px;
-            background-color: #f1bf01;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: fixed;
-            top: 5px;
-            right: 20px;
-        }
-
-        .yellow-circle img {
-            width: 80%;
-        }
-
-        .upchLogo img {
-            width: auto;
-            max-height: 50px;
-            position: fixed;
-            left: 20px;
-            top: 10px;
-            z-index: 1001;
-        }
 
         .swiper-container {
             width: 100%;
@@ -151,8 +72,11 @@
             cursor: pointer;
             position: relative;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.5s ease, top 0.5s ease-in-out, left 0.5s ease-in-out;
         }
+        
+
+       
 
         .node:hover {
             transform: scale(1.2);
@@ -167,6 +91,31 @@
             font-size: 16px;
             color: black;
         }
+
+        .node.centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 1050;
+            transition: transform 0.5s ease-in-out;
+        }
+
+
+        #node.centered:after {
+            display: none;
+        }
+
+        .node.hidden {
+            visibility: hidden; /* Oculta los nodos, pero mantiene el espacio */
+            transition: visibility 0.0s ease-in-out; /* Suaviza la transición de visibilidad */
+        }
+        
+
+        .no-arrow:after {
+            display: none;
+        }
+
 
         #X:after {
             display: none;
@@ -184,7 +133,7 @@
         
         .download-btn {
             padding: 10px 20px;
-            background-color: #383838; /* Color de fondo rojo */
+            background-color: #a90a2e; /* Color de fondo rojo */
             color: white; /* Texto blanco */
             text-decoration: none; /* Sin subrayado */
             border-radius: 5px; /* Bordes redondeados */
@@ -291,7 +240,7 @@
             inteligencia artificial y seguridad de datos. El programa fomenta habilidades prácticas y teóricas para desarrollar 
             soluciones innovadoras que respondan a los desafíos tecnológicos del presente y futuro. Además, ofrece oportunidades 
             para estudios y prácticas internacionales, respaldando una educación de calidad y alcance global.</p>
-        <div class="cycle-container1">
+        <div class="cycle-container1" style="position: relative;">
             <div class="node" id="I" onclick="mostrarCursos('PRIMER')">I</div>
             <div class="node" id="II" onclick="mostrarCursos('SEGUNDO')">II</div>
             <div class="node" id="III" onclick="mostrarCursos('TERCER')">III</div>
@@ -303,13 +252,15 @@
             <div class="node" id="IX" onclick="mostrarCursos('NOVENO')">IX</div>
             <div class="node" id="X" onclick="mostrarCursos('DÉCIMO')">X</div>
         </div>
+
+        <!-- Contenedor para detalles de cursos, inicialmente vacío y oculto -->
+        <div id="detalles-cursos" class="curso-detail" style="display: none;"></div>
+
+
         <div class="button">
-            <a id="descargarMallaoCurso" href="https://drive.google.com/file/d/1PvkB_XbA8Y_WBQ9IKJLiHY2jWNaUXwpd/view?usp=sharing" class="download-btn" target="_blank">Descargar Malla 2025</a>
-        </div>
+            <a href="https://drive.google.com/file/d/1y091Mi-o86HAPGjEzKH3uMn0rBDPBGYp/view?usp=sharing" class="download-btn" target="_blank">Descargar Malla 2025</a>
+        </div>    
         
-        <div id="cursos-container">
-            <p>Primero selecciona un ciclo</p>
-        </div>
     </div>
 
 
@@ -375,7 +326,7 @@
             });
         });
     </script>
-    <script src="\source\scripts\scripts.js"></script>
+    <script src="/source/scripts/scripts.js"></script>
 
 </body>
 </html>

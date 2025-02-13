@@ -1,0 +1,217 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #a90a2e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-family: Sedan SC;
+}
+
+p{
+    text-align: center;
+    font-family: Courier Prime;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.yellow-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #f1bf01;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 5px;
+    right: 20px;
+}
+
+.yellow-circle img {
+    width: 80%;
+}
+
+.upchLogo img {
+    width: auto;
+    max-height: 50px;
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    z-index: 1001;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 80px;
+    z-index: 1002;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    width: 120px;
+    opacity: 0.5;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1.5);
+}
+
+.content {
+    display: none; /* Inicialmente oculto */
+    padding: 20px;
+    margin-top: 200px; /* Ajuste según necesidades */
+}
+.active {
+    display: block; /* Mostrar contenido activo */
+}
+
+/* Nodos del año 2020*/
+
+.cycle-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    width: 100%;
+}
+.cycle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+    position: relative;
+    width: 100%;
+}
+
+.node {
+    width: 70px;
+    height: 70px;
+    background-color: #f1bf01;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.node:hover {
+    transform: scale(1.2);
+    background-color: #ffc107;
+}
+
+.node:after {
+    content: '→';
+    position: absolute;
+    top: 21px;
+    right: -18px;
+    font-size: 16px;
+    color: black;
+}
+
+#X:after {
+    display: none;
+}
+
+
+
+.button {
+    position: relative;
+    height: 30vh; /* Ajusta la altura del contenedor al 100% de la altura de la ventana */
+    display: flex;
+    align-items: flex-end; /* Alinea el contenido al final del contenedor (parte inferior) */
+    justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+.download-btn {
+    padding: 10px 20px;
+    background-color: #383838; /* Color de fondo rojo */
+    color: white; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño del texto */
+}
+
+
+.site-footer {
+    background-color: #a90a2e;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.footer-section {
+    padding: 0;
+    font-size: 12px;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
