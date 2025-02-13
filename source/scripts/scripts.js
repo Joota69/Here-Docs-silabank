@@ -17,7 +17,7 @@ function abrirCarrera1() {
     }, 500); 
     setTimeout(() => {
         window.location.href = "/source/html/informatica.html";
-    }, 3000);
+    }, 1500);
 }
 
 
@@ -176,3 +176,42 @@ function descargarSilabosPorCiclo(ciclo) {
 }
 
 
+/**
+ * Draws text along a curved path on a canvas element.
+ *
+ * @param {string} canvasId - The ID of the canvas element.
+ * @param {string} text - The text to be drawn.
+ * @param {number} x - The x-coordinate of the center of the curved path.
+ * @param {number} y - The y-coordinate of the center of the curved path.
+ * @param {number} radius - The radius of the curved path.
+ * @param {number} angleOffset - The starting angle offset in radians.
+ */
+function drawCurvedText(canvasId, text, x, y, radius, angleOffset) {
+    var canvas = document.getElementById(canvasId); // Get the canvas element by ID
+    var ctx = canvas.getContext("2d"); // Get the 2D drawing context
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+    ctx.textAlign = "center"; // Set text alignment to center
+    ctx.textBaseline = "middle"; // Set text baseline to middle
+    ctx.fillStyle = "white"; // Set text color to white
+    ctx.font = "bold 20px Arial"; // Set font style
+
+    var angleStep = Math.PI / 6; // Define the angle step for each character
+    var startAngle = angleOffset; // Define the starting angle
+
+    for (var i = 0; i < text.length; i++) {
+        var angle = startAngle + (i * angleStep); // Calculate the angle for each character
+        var xPos = x + radius * Math.cos(angle); // Calculate the x position
+        var yPos = y + radius * Math.sin(angle); // Calculate the y position
+        ctx.save(); // Save the current context state
+        ctx.translate(xPos, yPos); // Translate to the character position
+        ctx.rotate(angle - Math.PI / 2); // Rotate the context to align the character
+        ctx.fillText(text[i], 0, 0); // Draw the character
+        ctx.restore(); // Restore the context state
+    }
+}
+
+drawCurvedText("canvas1", "FACI", 70, 70, -40, -Math.PI / 100);
+drawCurvedText("canvas2", "FAMEE", 30, 70, -40, 1.4);
+drawCurvedText("canvas3", "ZEVAF", 70, 35, 40, Math.PI / 2); 
+drawCurvedText("canvas4", "APSAF", 40, 30, 40, 0);
