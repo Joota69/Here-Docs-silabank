@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/source/css/styles.css">
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            margin-top: 100px;
+            width: 50%;
+            height: 60%;
+            overflow: visible;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide:not(.swiper-slide-active) {
+            opacity: 0.5;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .swiper-slide.swiper-slide-active {
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div id="hola">
+        <h1>Hola este es texto</h1>
+    </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" data-title="Informática">
+                <div class="circleOfCareer">
+                    <div class="career career1" onclick="abrirCarrera1()">
+                        <h1>Informática</h1>
+                    </div>
+                    <div class="career career2" onclick="abrirCarrera2()">
+                        <h1>Ambiental</h1>
+                    </div>
+                    <div class="career career3" onclick="abrirCarrera3()">
+                        <h1>Biomedica</h1>
+                    </div>
+                    <div class="career career4" onclick="abrirCarrera4()">
+                        <h1>Industrial</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="circleOfCareer">
+                    <div class="career career1" onclick="abrirCarrera1()" style="background-color: #2F6B1F;">
+                        <h1>Química</h1>
+                    </div>
+                    <div class="career career2" onclick="abrirCarrera2()" style="background-color: #4C9A2A;">
+                        <h1>Biología</h1>
+                    </div>
+                    <div class="career career3" onclick="abrirCarrera3()" style="background-color: #6BBF59;">
+                        <h1>No sé</h1>
+                    </div>
+                    <div class="career career4" onclick="abrirCarrera4()" style="background-color: #A8D5BA;">
+                        <h1>Jota</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="circleOfCareer">
+                    <div class="career career1" onclick="abrirCarrera1()" style="background-color: #3c1f6b;">
+                        <h1>Informática</h1>
+                    </div>
+                    <div class="career career2" onclick="abrirCarrera2()" style="background-color: #552a9a;">
+                        <h1>Ambiental</h1>
+                    </div>
+                    <div class="career career3" onclick="abrirCarrera3()" style="background-color: #595bbf;">
+                        <h1>Biomedica</h1>
+                    </div>
+                    <div class="career career4" onclick="abrirCarrera4()" style="background-color: #b2a8d5;">
+                        <h1>Industrial</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            loop: true,
+            spaceBetween: -150,
+            centeredSlides: true,
+            speed: 600,
+            effect: 'slide',
+            on: {
+                slideChangeTransitionEnd: function () {
+                    updateText(swiper.realIndex);
+                }
+            }
+        });
+    
+        function updateText(index) {
+            const textElement = document.getElementById('hola');
+            let text = '';
+    
+            switch (index) {
+                case 0:
+                    text = '<h1>Estás viendo Informática, Ambiental, Biomedica, Industrial</h1>';
+                    break;
+                case 1:
+                    text = '<h1>Estás viendo Química, Biología, No sé, Jota</h1>';
+                    break;
+                case 2:
+                    text = '<h1>Estás viendo Informática, Ambiental, Biomedica, Industrial (versión 2)</h1>';
+                    break;
+                default:
+                    text = '<h1>Bienvenido</h1>';
+            }
+    
+            textElement.innerHTML = text;
+        }
+    
+        // Call updateText once on page load to set the initial text
+        updateText(swiper.realIndex);
+    </script>
+    
+    
+</body>
+
+</html>

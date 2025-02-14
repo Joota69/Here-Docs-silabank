@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/source/css/styles.css">
+</head>
+<style>
+    .swiper {
+  width: 1600px;
+  height: 700px;
+  background-color: brown;
+  text-align: center;
+}
+</style>
+<body>
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <h1>Slide 1</h1>
+            <div class="circleOfCareer" id="circleOfCareer">
+                <div class="career career1" onclick="abrirCarrera1()">
+                    <h1>Informática</h1>
+                </div>
+                <div class="career career2" onclick="abrirCarrera2()">
+                    <h1>Ambiental</h1>
+                </div>
+                <div class="career career3" onclick="abrirCarrera3()">
+                    <h1>Biomedica</h1>
+                </div>
+                <div class="career career4" onclick="abrirCarrera4()">  
+                    <h1>Industrial</h1>
+                </div>
+        
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <h1>Slide 2</h1>
+            <img src="/images/cayetanoLogo.png"></div>
+          <div class="swiper-slide">
+            <h1>Slide 1</h1>
+            <div class="circleOfCareer" id="circleOfCareer">
+                <div class="career career1" onclick="abrirCarrera1()">
+                    <h1>Informática</h1>
+                </div>
+                <div class="career career2" onclick="abrirCarrera2()">
+                    <h1>Ambiental</h1>
+                </div>
+                <div class="career career3" onclick="abrirCarrera3()">
+                    <h1>Biomedica</h1>
+                </div>
+                <div class="career career4" onclick="abrirCarrera4()">  
+                    <h1>Industrial</h1>
+                </div>
+          </div>
+        </div>
+       
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+        effect: "centered"
+        });
+    </script>
+</body>
+</html>
