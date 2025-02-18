@@ -46,25 +46,38 @@ function asignarEventosBotones() {
 
 
 function mostrarCursos(ciclo) {
-    let detalles = document.getElementById('detalles-cursos'); // Asegúrate de que este contenedor está listo en el HTML
-    detalles.innerHTML = ""; // Limpiar contenidos anteriores
-    detalles.style.display = 'block'; // Preparar el contenedor para nuevos detalles
+    let detalles = document.getElementById('detalles-cursos');
+    var downloadBtn = document.getElementById('download-link');
+    var currentText = downloadBtn.textContent;
+    var option = downloadOptions[ciclo.toUpperCase()];
 
-    cursosPorCiclo[ciclo].forEach(curso => {
-        const div = document.createElement('div');
-        div.textContent = curso;
-        div.className = 'detalle-curso'; // Asumiendo que tienes estilos para esto
-        detalles.appendChild(div);
-    });
+    if (option && currentText === option.text) {
+        // Si ya está mostrando ese ciclo, volver a la malla completa
+        downloadBtn.href = downloadOptions['COMPLETO'].url;
+        downloadBtn.textContent = downloadOptions['COMPLETO'].text;
+        downloadBtn.style.backgroundColor = downloadOptions['COMPLETO'].color;
 
-    // Animación para mostrar detalles
-    detalles.style.opacity = '0';
-    detalles.style.transform = 'translateY(20px)';
-    setTimeout(() => {
-        detalles.style.opacity = '1';
-        detalles.style.transform = 'translateY(0px)';
-    }, 100);
+        // Ocultar detalles de los cursos
+        detalles.style.display = 'none';
+        detalles.innerHTML = "";  // Limpia el contenido
+    } else {
+        // Si no, cambiar al enlace, texto y color del ciclo seleccionado y mostrar los detalles
+        downloadBtn.href = option.url;
+        downloadBtn.textContent = option.text;
+        downloadBtn.style.backgroundColor = option.color;
+
+        // Muestra los detalles de los cursos para el ciclo seleccionado
+        detalles.innerHTML = ""; // Primero limpia el contenido anterior
+        cursosPorCiclo[ciclo].forEach(curso => {
+            const div = document.createElement('div');
+            div.textContent = curso;
+            div.className = 'detalle-curso';
+            detalles.appendChild(div);
+        });
+        detalles.style.display = 'block'; // Asegúrate de que el contenedor sea visible
+    }
 }
+
 
 
 let currentNode = null; // Almacena el nodo actualmente centrado
@@ -127,36 +140,19 @@ cargarCursos();
 
 
 
-function descargarSilabosPorCiclo(ciclo) {
-
-    const botonDescargar = document.getElementById("descargarMallaoCurso");
-    botonDescargar.style.backgroundColor = "blue";  
-    botonDescargar.textContent = `Descargar sílabos de ${ciclo}`;
-    let linkMap = {
-        "primer": "https://drive.google.com/drive/folders/1ZPwgFELx13X4s9UxwPBBiOq3K5aZIQC6?usp=sharing",
-        "segundo": "https://drive.google.com/drive/folders/14flvnkyqOT7pIApHCeRjPzGN9sZqSP1q?usp=sharing",
-        "tercer": "https://drive.google.com/drive/folders/1II8rec5Fc3wX3AihE4OBO79BHeJZAhRG?usp=drive_link",
-        "cuarto": "https://drive.google.com/drive/folders/1_u991sNitQEBR_AG3Az9ec_gzW0FWj9v?usp=drive_link",
-        "quinto": "https://drive.google.com/drive/folders/1tSiM3pj5pOp2VvDrZiLpd56Db9FhjRj8?usp=drive_link",
-        "sexto": "https://drive.google.com/drive/folders/1Ukl3UTE4yAVkfxEo4auive-ZxU_w0gfa?usp=drive_link",
-        "séptimo": "https://drive.google.com/drive/folders/1_TofLWrDz5_W8xqkWwziIhR5ZBDXmV_s?usp=drive_link",
-        "octavo": "https://drive.google.com/drive/folders/1dfoWHFm3LQngqcbudoXD5b0HVdqkE92N?usp=drive_link",
-        "noveno": "https://drive.google.com/drive/folders/1ngdPCQPcrKVuGCUJjVlvp3UPwJQENUsZ?usp=drive_link",
-        "décimo": "https://drive.google.com/drive/folders/1iZlGR_0GC7rq0S0fiy_xZc0F-MNco2y-?usp=drive_link"
-    };
-
-    if (linkMap[ciclo.toLowerCase()]) {
-        botonDescargar.href = linkMap[ciclo.toLowerCase()];
-    } else {
-        botonDescargar.href = "#"; 
-    }
-    botonDescargar.onclick = () => {
-        const cursosSeleccionados = Array.from(cursosDropdown.selectedOptions).map(option => option.textContent);
-        descargarSilabos(ciclo, cursosSeleccionados);
-    };
-
-}
-
+var downloadOptions = {
+    'PRIMER': { url: 'https://drive.google.com/file/d/URL_DE_PRIMER_CICLO', text: 'Descargar Sílabos del Primer Ciclo', color: '#F44336' }, // Rojo
+    'SEGUNDO': { url: 'https://drive.google.com/file/d/URL_DE_SEGUNDO_CICLO', text: 'Descargar Sílabos del Segundo Ciclo', color: '#E91E63' }, // Rosa
+    'TERCER': { url: 'https://drive.google.com/file/d/URL_DE_TERCER_CICLO', text: 'Descargar Sílabos del Tercer Ciclo', color: '#9C27B0' }, // Púrpura
+    'CUARTO': { url: 'https://drive.google.com/file/d/URL_DE_CUARTO_CICLO', text: 'Descargar Sílabos del Cuarto Ciclo', color: '#673AB7' }, // Púrpura oscuro
+    'QUINTO': { url: 'https://drive.google.com/file/d/URL_DE_QUINTO_CICLO', text: 'Descargar Sílabos del Quinto Ciclo', color: '#3F51B5' }, // Índigo
+    'SEXTO': { url: 'https://drive.google.com/file/d/URL_DE_SEXTO_CICLO', text: 'Descargar Sílabos del Sexto Ciclo', color: '#2196F3' }, // Azul
+    'SÉPTIMO': { url: 'https://drive.google.com/file/d/URL_DE_SEPTIMO_CICLO', text: 'Descargar Sílabos del Séptimo Ciclo', color: '#03A9F4' }, // Azul claro
+    'OCTAVO': { url: 'https://drive.google.com/file/d/URL_DE_OCTAVO_CICLO', text: 'Descargar Sílabos del Octavo Ciclo', color: '#00BCD4' }, // Cian
+    'NOVENO': { url: 'https://drive.google.com/file/d/URL_DE_NOVENO_CICLO', text: 'Descargar Sílabos del Noveno Ciclo', color: '#009688' }, // Verde azulado
+    'DÉCIMO': { url: 'https://drive.google.com/file/d/URL_DE_DECIMO_CICLO', text: 'Descargar Sílabos del Décimo Ciclo', color: '#4CAF50' }, // Verde 
+    'COMPLETO': { url: 'https://drive.google.com/file/d/URL_DE_LA_MALLA_COMPLETA/view?usp=sharing', text: 'Descargar Malla 2025', color: '#a90a2e' } // Rojo Naranja
+};
 
 
 
