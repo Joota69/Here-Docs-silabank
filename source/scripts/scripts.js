@@ -69,10 +69,10 @@ function mostrarCursos(ciclo) {
         // Muestra los detalles de los cursos para el ciclo seleccionado
         detalles.innerHTML = ""; // Primero limpia el contenido anterior
         cursosPorCiclo[ciclo].forEach(curso => {
-            const div = document.createElement('div');
-            div.textContent = curso;
-            div.className = 'detalle-curso';
-            detalles.appendChild(div);
+            const button = document.createElement('button');
+            button.textContent = curso;
+            button.className = 'detalle-curso';
+            detalles.appendChild(button);
         });
         detalles.style.display = 'block'; // Asegúrate de que el contenedor sea visible
     }
